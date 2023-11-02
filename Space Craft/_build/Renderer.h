@@ -12,7 +12,7 @@ public:
 		}
 		return instance;
 	}
-	//remove.OCD
+
 	void Start();
 
 	void LoadTextures();
@@ -22,5 +22,5 @@ public:
 private:
 	static Renderer* instance;
 
-	Texture2D background;
+	Texture2D mainBackground;
 };

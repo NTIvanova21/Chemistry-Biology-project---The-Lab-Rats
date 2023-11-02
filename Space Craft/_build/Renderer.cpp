@@ -3,11 +3,11 @@
 Renderer* Renderer::instance = nullptr;
 
 void Renderer::Start() {
-	//;( nqma da se opravim
+	
 }
 
 void Renderer::LoadTextures() {
-	background = LoadTexture("../resources/background.png");
+	mainBackground = LoadTexture("../resources/main_background.png");
 }
 
 void Renderer::Update() {
