@@ -1,2 +1,5 @@
-﻿  Character.cpp
-  game-premake.vcxproj -> D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_bin\Debug\game-premake.exe
+﻿  Manager.cpp
+  Renderer.cpp
+  main.cpp
+  Generating Code...
+  game-premake.vcxproj -> C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_bin\Debug\game-premake.exe
