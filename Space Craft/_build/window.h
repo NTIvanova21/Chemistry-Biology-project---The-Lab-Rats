@@ -1,3 +1,3 @@
-#define screenWidth 1080
-#define screenHeight 720
+#define screenWidth 1920
+#define screenHeight 1080
 #define screenTitle "Space Craft"

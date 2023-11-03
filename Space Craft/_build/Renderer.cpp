@@ -7,13 +7,14 @@ void Renderer::Start() {
 }
 
 void Renderer::LoadTextures() {
-	mainBackground = LoadTexture("../resources/main_background.png");
+	map = LoadTexture("../resources/main_background.png");
 }
 
 void Renderer::Update() {
 	BeginDrawing();
 
 		ClearBackground(WHITE);
+		DrawTexture(map, 0, 0, WHITE);
 		GameManager::GetInstance()->GetCharacter()->DrawCharacter();
 
 	EndDrawing();

@@ -15,13 +15,13 @@ public:
     void ResetFrames();
 
 private:
-    Vector2 position = { 300, 200 };
+    Vector2 position = { 300, 700 };
     float movementSpeed = 5;
 
     Rectangle frameRec;
     Texture2D characterWalk;
 
-    bool isFlipped = false;
+    bool isFlipped = true;
 
     float time = 0.0f;
     int frame = 0;

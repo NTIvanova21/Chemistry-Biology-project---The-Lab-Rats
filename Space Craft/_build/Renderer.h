@@ -22,5 +22,5 @@ public:
 private:
 	static Renderer* instance;
 
-	Texture2D mainBackground;
+	Texture2D map;
 };
