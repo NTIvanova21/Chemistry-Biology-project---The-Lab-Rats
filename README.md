@@ -58,7 +58,7 @@ https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats.git
 <p align="left">
     <p>
     <img src="https://seeklogo.com/images/C/c-logo-43CE78FF9C-seeklogo.com.png" alt="C++" width=48px>
-    <img src="https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats/tree/main/Documentation/Images/Raylib.svg" alt = "Raylib" width = 48px>
+    <img src="https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats/blob/main/Documentation/Images/Raylib.svg" alt = "Raylib" width = 48px>
     </p>
 </p>
 
@@ -69,3 +69,7 @@ https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats.git
     <img src="https://cdn.worldvectorlogo.com/logos/powerpoint-2.svg" alt="PowerPoint" width=48px>
     </p>
 </p>
+
+<hr>
+
+## <p align="center">Made with love by The Lab Rats❤️</p></h2>
