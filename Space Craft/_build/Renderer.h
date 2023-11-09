@@ -22,5 +22,6 @@ public:
 private:
 	static Renderer* instance;
 
+	Image icon;
 	Texture2D map;
 };

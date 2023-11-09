@@ -8,6 +8,7 @@ void Renderer::Start() {
 
 void Renderer::LoadTextures() {
 	map = LoadTexture("../resources/main_background.png");
+	icon = LoadImage("../resources/icon.png");
 }
 
 void Renderer::Update() {
