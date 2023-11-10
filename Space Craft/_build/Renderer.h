@@ -19,10 +19,14 @@ public:
 
 	void Update();
 
+	void BackgroundMovement(Texture2D map, float& scrollback);
+
 private:
 	static Renderer* instance;
 
 	Image icon;
 	Texture2D map;
 	Texture2D mainMenu;
+
+	float scrollback = 0.0f;
 };

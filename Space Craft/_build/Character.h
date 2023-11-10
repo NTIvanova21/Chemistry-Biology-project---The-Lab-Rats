@@ -14,6 +14,7 @@ public:
 
     void ResetFrames();
 
+
 private:
     Vector2 position = { 300, 690 };
     float movementSpeed = 5;

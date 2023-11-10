@@ -7,6 +7,7 @@ Renderer* Renderer::instance = nullptr;
 Button buttons;
 
 bool menu = true;
+
 void Renderer::Start() {
 	
 }
@@ -19,6 +20,25 @@ void Renderer::LoadTextures() {
 	SetWindowIcon(icon);
 }
 
+void Renderer::BackgroundMovement(Texture2D map,float& scrollback) {
+
+	if (IsKeyDown(KEY_D) && (scrollback >= -1065.0f && scrollback <= 5.0f)) {
+
+		scrollback -= 4.0f;
+		if (scrollback <= -map.width * 2) {
+			scrollback = 0;
+		}
+	}
+
+	////Moves The Background And Prevents Mickey From Going To Far To The Left
+	if (IsKeyDown(KEY_A) && (scrollback <= -10.0f && scrollback >= -1265.0f)) {
+
+		scrollback += 4.0f;
+		if (scrollback <= -map.width * 2) {
+			scrollback = 0;
+		}
+	}
+}
 void Renderer::Update() {
 	BeginDrawing();
 
@@ -46,7 +66,8 @@ void Renderer::Update() {
 			}
 		}
 		else {
-			DrawTexture(map, 0, 0, WHITE);
+			BackgroundMovement(map, scrollback);
+			DrawTextureEx(map, { scrollback }, 0.0f, 1.0f, WHITE);
 			GameManager::GetInstance()->GetCharacter()->DrawCharacter();
 		}
 		

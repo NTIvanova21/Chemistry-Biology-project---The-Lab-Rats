@@ -1,13 +1,8 @@
-﻿  Character.cpp
-  GameManager.cpp
-  Manager.cpp
-  Renderer.cpp
-D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(33,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(33,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(34,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(34,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(35,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(35,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  main.cpp
-  Generating Code...
+﻿  Renderer.cpp
+D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(53,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(53,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(54,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(54,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(55,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(55,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   game-premake.vcxproj -> D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_bin\Debug\game-premake.exe
