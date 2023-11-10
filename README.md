@@ -38,9 +38,9 @@ https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats.git
 <p>2. Open the .sln file</p>
 <p>3. Run the project!</p>
 
-# 📄 Documentation<
-### ➤ <a href="#">Documentation</a><img src="https://cdn.worldvectorlogo.com/logos/word-1.svg" alt="Word" width="30" height="20"/> 
-### ➤ <a href="#">Presentation </a><img src="https://cdn.worldvectorlogo.com/logos/powerpoint-2.svg" alt="PowerPoint" width="30" height="20"/>
+# 📄 Documentation
+### ➤ <a href="https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats/blob/main/Documentation/Documentation.docx">Documentation</a><img src="https://cdn.worldvectorlogo.com/logos/word-1.svg" alt="Word" width="30" height="20"/> 
+### ➤ <a href="https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats/blob/main/Documentation/Presentation.pptx">Presentation </a><img src="https://cdn.worldvectorlogo.com/logos/powerpoint-2.svg" alt="PowerPoint" width="30" height="20"/>
 ### ➤ <a href="#">QA documentation </a><img src="https://cdn.worldvectorlogo.com/logos/excel-4.svg" alt="Word" width="30" height="20"/>
 
 # 💻 Used Technologies
@@ -72,6 +72,7 @@ https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats.git
     <p>
     <img src="https://cdn.worldvectorlogo.com/logos/word-1.svg" alt="Word" width=48px>
     <img src="https://cdn.worldvectorlogo.com/logos/powerpoint-2.svg" alt="PowerPoint" width=48px>
+    <img src="https://cdn.worldvectorlogo.com/logos/excel-4.svg" alt="Excel" width=48px>
     </p>
 </p>
 
