@@ -178,6 +178,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -187,6 +188,7 @@
   <ItemGroup>
     <ClInclude Include="Character.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="window.h" />

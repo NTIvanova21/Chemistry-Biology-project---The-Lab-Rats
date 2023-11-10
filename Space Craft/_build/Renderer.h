@@ -24,4 +24,5 @@ private:
 
 	Image icon;
 	Texture2D map;
+	Texture2D mainMenu;
 };

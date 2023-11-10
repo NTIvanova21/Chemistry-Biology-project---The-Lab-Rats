@@ -15,7 +15,7 @@ public:
     void ResetFrames();
 
 private:
-    Vector2 position = { 300, 700 };
+    Vector2 position = { 300, 690 };
     float movementSpeed = 5;
 
     Rectangle frameRec;
