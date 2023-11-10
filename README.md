@@ -15,7 +15,7 @@
 <p> Our team decided to make a 2D game focused on ecology. For this project we used  C++ as a programming language.</p>
 
 # 🚀 Plot 
-<p> It’s the year 2078 and the Earth’s orbit is so poluted that there is trash even on the moon. You are an astronaut garbage collector and your job is to collect the differend types of trash on the Moon so that way you can clean both the Moon’s surface and the Earth’s orbit </p>
+<p> It’s the year 2078 and the Earth’s orbit is so poluted that there is trash even on the Moon. You are an astronaut garbage collector and your job is to collect the differend types of trash on the Moon so that way you can clean both the Moon’s surface and the Earth’s orbit </p>
 
 
 
@@ -38,6 +38,11 @@ https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats.git
 <p>2. Open the .sln file</p>
 <p>3. Run the project!</p>
 
+# 📄 Documentation<
+### ➤ <a href="#">Documentation</a><img src="https://cdn.worldvectorlogo.com/logos/word-1.svg" alt="Word" width="30" height="20"/> 
+### ➤ <a href="#">Presentation </a><img src="https://cdn.worldvectorlogo.com/logos/powerpoint-2.svg" alt="PowerPoint" width="30" height="20"/>
+### ➤ <a href="#">QA documentation </a><img src="https://cdn.worldvectorlogo.com/logos/excel-4.svg" alt="Word" width="30" height="20"/>
+
 # 💻 Used Technologies
 ### Used code editor & collaborative service: 
 <p align="left">
@@ -50,7 +55,7 @@ https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats.git
 
 ### Used tools for our visual elements:
 <p align="left">
-    <a href="https://www.figma.com/"><img src="https://img.icons8.com/color/344/figma--v1.png" alt="Figma logo" width=48px/></a>
+    <a href="https://www.aseprite.org/"><img src="https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats/blob/main/Documentation/Images/asesprite_logo.png" alt="Asesprite logo" width=48px/></a>
     
 </p>
 
