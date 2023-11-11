@@ -1,5 +1,9 @@
 # The-Lab-Rats
 
+<p align = "center">
+  <img src="https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats/blob/main/Documentation/Images/logo.svg" width="425" text-align="center">
+</p>
+
 <hr>
 
 # 🏆 The Team
