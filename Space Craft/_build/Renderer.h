@@ -27,6 +27,7 @@ private:
 	Image icon;
 	Texture2D map;
 	Texture2D mainMenu;
+	Texture2D infoMenu;
 
 	float scrollback = 0.0f;
 };

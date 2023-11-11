@@ -6,7 +6,7 @@
 Renderer* Renderer::instance = nullptr;
 Button buttons;
 
-bool menu = true;
+bool menu = true, info = false;
 
 void Renderer::Start() {
 	
@@ -15,6 +15,7 @@ void Renderer::Start() {
 void Renderer::LoadTextures() {
 	mainMenu = LoadTexture("../resources/main_menu.png");
 	map = LoadTexture("../resources/main_background.png");
+	infoMenu = LoadTexture("../resources/info.png");
 	icon = LoadImage("../resources/icon.png");
 
 	SetWindowIcon(icon);
@@ -49,6 +50,7 @@ void Renderer::Update() {
 			Button::GetInstance()->DrawButton(buttons.start);	
 			Button::GetInstance()->DrawButton(buttons.info);
 			Button::GetInstance()->DrawButton(buttons.quit);
+			
 
 			DrawText("Play", buttons.start.x + 40, buttons.start.y - 4, 100, WHITE);
 			DrawText("Info", buttons.info.x + 40, buttons.info.y - 4, 100, WHITE);
@@ -58,12 +60,23 @@ void Renderer::Update() {
 				menu = false;
 			}
 			if (Button::GetInstance()->IsClicked(buttons.info)) {
-				//info
-				//back button?
+				info = true;
+				menu = false;
 			}
 			if (Button::GetInstance()->IsClicked(buttons.quit)) {
 				Manager::GetInstance()->Close();
 			}
+		}
+		else if(info) {
+			DrawTexture(infoMenu, 0, 0, WHITE);
+			Button::GetInstance()->DrawButton(buttons.back);
+			DrawText("Back", buttons.back.x + 27, buttons.back.y + 20, 50, WHITE);
+			if (Button::GetInstance()->IsClicked(buttons.back)) {
+				menu = true;
+				info = false;
+			}
+			
+			
 		}
 		else {
 			BackgroundMovement(map, scrollback);
