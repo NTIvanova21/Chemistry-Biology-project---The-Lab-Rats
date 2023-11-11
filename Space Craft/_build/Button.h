@@ -20,6 +20,7 @@ public:
 	Rectangle info = { 810,650,300,100 };
 	Rectangle quit = { 810,850,300,100 };
 	Rectangle back = { 50,50,200,80 };
+	Rectangle arrow = { 37,50,100,55 };
 
 private:
 	static Button* instance;

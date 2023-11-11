@@ -31,6 +31,10 @@ private:
 	Texture2D infoMenu;
 	Texture2D spaceshipMap;
 	Texture2D shopMap;
+	Texture2D earthStage1;
+	Texture2D earthStage2;
+	Texture2D earthStage3;
+	Texture2D earthClean;
 
 	float scrollback = 0.0f;
 
