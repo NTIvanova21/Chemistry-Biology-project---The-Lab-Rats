@@ -6,6 +6,15 @@ Character::Character(std::string characterWalkPath) {
     frameRec = { 0, 0, (float)characterWalk.width / 8, (float)characterWalk.height };
 }
 
+Vector2 Character::GetPosition(){
+    return position;
+}
+
+void Character::SetPosition(Vector2 position)
+{
+    this->position = position;
+}
+
 void Character::DrawCharacter() {
 
     frameRec.x = (float)frame * (float)characterWalk.width / 8;
@@ -29,8 +38,6 @@ void Character::Walk(int direction) {
     }
 
     frame %= 8; // Replace with maxFrames
-
-    position.x += movementSpeed * direction;
 }
 
 void Character::ResetFrames() {

@@ -31,4 +31,5 @@ private:
 	Texture2D infoMenu;
 
 	float scrollback = 0.0f;
+
 };

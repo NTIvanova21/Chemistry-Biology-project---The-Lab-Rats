@@ -2,15 +2,12 @@
 #include "Button.h"
 #include "window.h"
 #include "Manager.h"
+#include "Character.h"
 
 Renderer* Renderer::instance = nullptr;
 Button buttons;
 
 bool menu = true, info = false;
-
-void Renderer::Start() {
-	
-}
 
 void Renderer::LoadTextures() {
 	mainMenu = LoadTexture("../resources/main_menu.png");
@@ -24,19 +21,29 @@ void Renderer::LoadTextures() {
 
 void Renderer::BackgroundMovement(Texture2D map,float& scrollback) {
 
-	if (IsKeyDown(KEY_D) && (scrollback >= -1065.0f && scrollback <= 5.0f)) {
+	auto character = GameManager::GetInstance()->GetCharacter();
+	Vector2 current = character->GetPosition();
+	if (IsKeyDown(KEY_D)){
 
-		scrollback -= 4.0f;
-		if (scrollback <= -map.width * 2) {
-			scrollback = 0;
+		if (scrollback <= 0.0f && scrollback >= -1078.0f){
+			scrollback -= 4.0f;
+		}
+		else if (scrollback <= -1078.0f){
+			if (current.x <= 1600){
+				current.x += 4;
+				character->SetPosition(current);
+			}
 		}
 	}
 
-	if (IsKeyDown(KEY_A) && (scrollback <= -10.0f && scrollback >= -1265.0f)) {
+	if (IsKeyDown(KEY_A)){
 
-		scrollback += 4.0f;
-		if (scrollback <= -map.width * 2) {
-			scrollback = 0;
+		if (scrollback <= -4.0f && scrollback >= -1265.0f){
+			scrollback += 4.0f;
+		}
+		else if (current.x >= 200){
+			current.x -= 4;
+			character->SetPosition(current);
 		}
 	}
 }

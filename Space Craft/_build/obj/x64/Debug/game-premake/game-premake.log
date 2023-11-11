@@ -1,10 +1,4 @@
 ﻿  Renderer.cpp
-C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(55,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(55,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(56,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(56,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(57,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(57,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(73,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(73,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  game-premake.vcxproj -> C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_bin\Debug\game-premake.exe
+C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(85,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(85,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  game-premake.vcxproj -> C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_bin\Debug\game-premake.exe
