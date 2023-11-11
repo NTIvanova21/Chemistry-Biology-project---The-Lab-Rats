@@ -7,13 +7,15 @@
 Renderer* Renderer::instance = nullptr;
 Button buttons;
 
-bool menu = true, info = false;
+bool menu = true, info = false, playing = true, spaceship = false, shop = false;
 int counter = 0;
 
 void Renderer::LoadTextures() {
 	mainMenu = LoadTexture("../resources/main_menu.png");
 	map = LoadTexture("../resources/main_background.png");
 	infoMenu = LoadTexture("../resources/info.png");
+	spaceshipMap = LoadTexture("../resources/spaceship_background.png");
+	shopMap = LoadTexture("../resources/spaceship_menu.png");
 	icon = LoadImage("../resources/icon.png");
 	fonty = LoadFont("../resources/candy_beans.otf");
 
@@ -64,6 +66,10 @@ void Renderer::BackgroundMovement(Texture2D map,float& scrollback) {
 	}
 }
 void Renderer::Update() {
+
+	auto character = GameManager::GetInstance()->GetCharacter();
+	Vector2 current = character->GetPosition();
+
 	BeginDrawing();
 
 		ClearBackground(WHITE);
@@ -97,15 +103,50 @@ void Renderer::Update() {
 				menu = true;
 				info = false;
 			}
-			
-			
 		}
-		else {
+		else if(playing) {
 			BackgroundMovement(map, scrollback);
 			DrawTextureEx(map, { scrollback }, 0.0f, 1.0f, WHITE);
 			GameManager::GetInstance()->GetCharacter()->DrawCharacter();
+			if (IsKeyPressed(KEY_E) && current.x <= 116) {
+				playing = false;
+				spaceship = true;
+				current.x = 1650;
+				character->SetPosition(current);
+			}
 		}
-		
+		else if (spaceship) {
+			DrawTexture(spaceshipMap, 0, 0, WHITE);
+			
+			GameManager::GetInstance()->GetCharacter()->DrawCharacter();
+			if (IsKeyDown(KEY_D)) {
+				
+				if (current.x <= 1650) {
+					GameManager::GetInstance()->GetCharacter()->Walk(1);
+					current.x += 6;
+					character->SetPosition(current);
+				}
+				
+			}
+			if (IsKeyDown(KEY_A)) {
+
+				if (current.x >= 200) {
+					GameManager::GetInstance()->GetCharacter()->Walk(-1);
+					current.x -= 6;
+					character->SetPosition(current);
+				}
+				
+			}
+			if (IsKeyPressed(KEY_E) && current.x >= 1650) {
+
+				playing = true;
+				spaceship = false;
+			}
+			if (IsKeyPressed(KEY_E) && current.x <= 200) {
+				spaceship = false;
+				shop = true;
+			}
+		}
 		
 
 	EndDrawing();
