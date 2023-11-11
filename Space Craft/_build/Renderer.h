@@ -24,6 +24,7 @@ public:
 private:
 	static Renderer* instance;
 
+	Font fonty;
 	Image icon;
 	Texture2D map;
 	Texture2D mainMenu;

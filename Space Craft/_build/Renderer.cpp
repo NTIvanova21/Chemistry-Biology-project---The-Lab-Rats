@@ -17,6 +17,7 @@ void Renderer::LoadTextures() {
 	map = LoadTexture("../resources/main_background.png");
 	infoMenu = LoadTexture("../resources/info.png");
 	icon = LoadImage("../resources/icon.png");
+	fonty = LoadFont("../resources/candy_beans.otf");
 
 	SetWindowIcon(icon);
 }
@@ -31,7 +32,6 @@ void Renderer::BackgroundMovement(Texture2D map,float& scrollback) {
 		}
 	}
 
-	////Moves The Background And Prevents Mickey From Going To Far To The Left
 	if (IsKeyDown(KEY_A) && (scrollback <= -10.0f && scrollback >= -1265.0f)) {
 
 		scrollback += 4.0f;
@@ -51,10 +51,9 @@ void Renderer::Update() {
 			Button::GetInstance()->DrawButton(buttons.info);
 			Button::GetInstance()->DrawButton(buttons.quit);
 			
-
-			DrawText("Play", buttons.start.x + 40, buttons.start.y - 4, 100, WHITE);
-			DrawText("Info", buttons.info.x + 40, buttons.info.y - 4, 100, WHITE);
-			DrawText("Quit", buttons.quit.x + 40, buttons.quit.y - 4, 100, WHITE);
+			DrawTextEx(fonty, "Play", { buttons.start.x + 60, buttons.start.y - 4 }, 100, 10, WHITE);
+			DrawTextEx(fonty, "Info", { buttons.info.x + 60, buttons.info.y - 4 }, 100, 10, WHITE);
+			DrawTextEx(fonty, "Quit", { buttons.quit.x + 60, buttons.quit.y - 4 }, 100, 10, WHITE);
 
 			if (Button::GetInstance()->IsClicked(buttons.start)) {
 				menu = false;
