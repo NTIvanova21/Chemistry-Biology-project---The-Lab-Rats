@@ -1,4 +1,2 @@
 ﻿  Renderer.cpp
-C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(85,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(85,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  game-premake.vcxproj -> C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_bin\Debug\game-premake.exe
+  game-premake.vcxproj -> D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_bin\Debug\game-premake.exe
