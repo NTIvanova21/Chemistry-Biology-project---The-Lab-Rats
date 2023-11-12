@@ -226,6 +226,22 @@ void Renderer::Update() {
 		// Draw the back button
 		DrawTextEx(fonty, "Back", { buttons.back.x + 10, buttons.back.y - 5 }, 100, 10, WHITE);
 
+		// Draw text for info
+		DrawTextEx(fonty, "INFO", { 885, 23 }, 100, 10, BLACK);
+		DrawTextEx(fonty, "Backstory", { 765, 153 }, 90, 10, BLACK);
+		DrawTextEx(fonty, "You are an astronaut garbage collector and your job is to collect the", { 165, 250 }, 55, 3, BLACK);
+		DrawTextEx(fonty, "differend types of trash on the Moon so that way you can clean both the", { 165, 300 }, 55, 3, BLACK);
+		DrawTextEx(fonty, "Moons surface and the Earths orbit.", { 165, 350 }, 55, 3, BLACK);
+
+		DrawTextEx(fonty, "How to play", { 765, 450 }, 90, 5, BLACK);
+		DrawTextEx(fonty, "move right -> press D", { 165, 600 }, 55, 3, BLACK);
+		DrawTextEx(fonty, "move left -> press A", { 165, 650 }, 55, 3, BLACK);
+		DrawTextEx(fonty, "collect an item -> press E", { 165, 700 }, 55, 3, BLACK);
+		DrawTextEx(fonty, "enter or exit the spaceship -> press E", { 165, 750 }, 55, 3, BLACK);
+
+
+
+
 		if (Button::GetInstance()->IsClicked(buttons.back)) {
 			// Return to the menu
 			menu = true;

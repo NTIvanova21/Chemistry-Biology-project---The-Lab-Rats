@@ -1,4 +1,12 @@
-﻿  GameManager.cpp
-  Manager.cpp
-  Generating Code...
+﻿  Renderer.cpp
+C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(50,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(54,24): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(54,24): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(54,48): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(54,48): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(255,41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(263,66): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(263,46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(403,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(403,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   game-premake.vcxproj -> C:\Users\Nadet\source\repos\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_bin\Debug\game-premake.exe
