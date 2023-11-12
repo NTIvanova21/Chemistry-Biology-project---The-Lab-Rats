@@ -37,4 +37,10 @@ void Button::DrawButtonsShop(Rectangle rect, bool completed, int type) {
 		}
 	}
 	
+	
 }
+
+void Button::DrawFinishButton(Rectangle rect){
+	DrawRectangleRec(rect, finishButton);
+} 
+

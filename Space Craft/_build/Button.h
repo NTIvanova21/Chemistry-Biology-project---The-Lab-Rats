@@ -16,6 +16,8 @@ public:
 
 	void DrawButtonsShop(Rectangle rect, bool completed, int type);
 
+	void DrawFinishButton(Rectangle rect);
+
 	bool IsClicked(Rectangle rect);
 
 	Rectangle mainMenuButtons[3] = {
@@ -23,14 +25,18 @@ public:
 		{ 810,650,300,100 },
 		{ 810,850,300,100 }
 	};
+
 	Rectangle back = { 50,50,200,80 };
 	Rectangle arrow = { 37,50,100,55 };
+
 	Rectangle shopButtons[3] = {
 		{1400,230,300,70 },
 		{1400,430,300,70 },
 		{1400,630,300,70 }
 	};
+
 	Rectangle completed = { 1400,430,300,70 };
+
 private:
 	static Button* instance;
 	

@@ -1,7 +1,4 @@
 ﻿  Button.cpp
-  Character.cpp
-  GameManager.cpp
-  main.cpp
   Manager.cpp
   Renderer.cpp
 C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(37,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
@@ -12,6 +9,6 @@ C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_bu
 C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(53,48): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(310,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(310,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Trash.cpp
+  main.cpp
   Generating Code...
   game-premake.vcxproj -> C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_bin\Debug\game-premake.exe
