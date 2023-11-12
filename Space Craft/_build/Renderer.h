@@ -42,21 +42,14 @@ private:
 
 	Image icon;
 
-	Texture2D map;
-	Texture2D mainMenu;
+	Texture2D maps[2];
+	Texture2D menus[3];
 	Texture2D infoMenu;
-	Texture2D spaceshipMap;
-	Texture2D shopMap;
-	Texture2D earthStage1;
-	Texture2D earthStage2;
-	Texture2D earthStage3;
-	Texture2D earthClean;
-	Texture2D glassTexture;
-	Texture2D paperTexture;
-	Texture2D plasticTexture;
-	Texture2D arrow;
+	Texture2D earthStages[4];
+	Texture2D typesOfTrash[3];
 	Texture2D endScreen;
 	Texture2D cutScene;
+	Texture2D arrow;
 	Texture2D reversedArrow;
 
 	Rectangle frameRec;

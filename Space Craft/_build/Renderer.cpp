@@ -7,21 +7,30 @@ Button buttons;
 //Load textures, images, font and icon
 
 void Renderer::LoadTextures() {
-	mainMenu = LoadTexture("../resources/main_menu.png");
-	map = LoadTexture("../resources/main_background.png");
-	infoMenu = LoadTexture("../resources/info.png");
-	spaceshipMap = LoadTexture("../resources/spaceship_background.png");
-	shopMap = LoadTexture("../resources/spaceship_menu.png");
-	earthStage1 = LoadTexture("../resources/earth_first_stage.png");
-	earthStage2 = LoadTexture("../resources/earth_second_stage.png");
-	earthStage3 = LoadTexture("../resources/earth_third_stage.png");
-	earthClean = LoadTexture("../resources/clean_earth.png");
-	glassTexture = LoadTexture("../resources/glass.png");
-	plasticTexture = LoadTexture("../resources/plastic.png");
-	paperTexture = LoadTexture("../resources/paper.png");
-	arrow = LoadTexture("../resources/arrow.png");
+
+	//menus[0] -> main men, menus[1] -> info menu, menus[2] -> spaceship shop menu
+	menus[0] = LoadTexture("../resources/main_menu.png");
+	menus[1] = LoadTexture("../resources/info.png");
+	menus[2] = LoadTexture("../resources/spaceship_menu.png");
+
+	//maps[0] -> main map, maps[1] -> spaceship map
+	maps[0] = LoadTexture("../resources/main_background.png");
+	maps[1] = LoadTexture("../resources/spaceship_background.png");
+
+	//earthStages[0] -> first stage poluted, earthStages[1] -> second stage poluted, earthStages[2] -> third stage poluted, earthStages[3] -> clean earth
+	earthStages[0] = LoadTexture("../resources/earth_first_stage.png");
+	earthStages[1] = LoadTexture("../resources/earth_second_stage.png");
+	earthStages[2] = LoadTexture("../resources/earth_third_stage.png");
+	earthStages[3] = LoadTexture("../resources/clean_earth.png");
+
+	//typesOfTrash[0] -> glass type, typesOfTrash[1] -> plastic type, typesOfTrash[2] -> paper type  
+	typesOfTrash[0] = LoadTexture("../resources/glass.png");
+	typesOfTrash[1] = LoadTexture("../resources/plastic.png");
+	typesOfTrash[2] = LoadTexture("../resources/paper.png");
+
 	endScreen = LoadTexture("../resources/end_screen.png");
 	cutScene = LoadTexture("../resources/cut_scene.png");
+	arrow = LoadTexture("../resources/arrow.png");
 	reversedArrow = LoadTexture("../resources/arrow_reversed.png");
 
 	frameRec = { 0, 0, (float)cutScene.width / 4, (float)cutScene.height };
@@ -55,13 +64,13 @@ void Renderer::LoadTrash() {
 
 		// Spawn trash
 		if (trashList.at(i) == 1) {
-			AddTrash({ glassTexture, position, rotate, 1 });
+			AddTrash({ typesOfTrash[0], position, rotate, 1});
 		}
 		if (trashList.at(i) == 2) {
-			AddTrash({ plasticTexture, position, rotate, 2});
+			AddTrash({ typesOfTrash[1], position, rotate, 2});
 		}
 		if (trashList.at(i) == 3) {
-			AddTrash({ paperTexture, position, rotate, 3 });
+			AddTrash({ typesOfTrash[2], position, rotate, 3 });
 		}
 
 	}
@@ -190,7 +199,7 @@ void Renderer::Update() {
 
 	if (menu) {
 
-		DrawTexture(mainMenu, 0, 0, WHITE);
+		DrawTexture(menus[0], 0, 0, WHITE);
 
 		// Draw menu buttons
 		Button::GetInstance()->DrawButton(buttons.mainMenuButtons[0]);
@@ -294,9 +303,9 @@ void Renderer::Update() {
 	}
 	else if (playing) {
 		// Make the backgound move
-		BackgroundMovement(map, scrollback);
+		BackgroundMovement(maps[0], scrollback);
 
-		DrawTextureEx(map, { scrollback }, 0.0f, 1.0f, WHITE);
+		DrawTextureEx(maps[0], {scrollback}, 0.0f, 1.0f, WHITE);
 		
 		// Add the trash
 		DrawTrash();
@@ -316,7 +325,7 @@ void Renderer::Update() {
 	}
 	else if (spaceship) {
 		// Draw spaseship
-		DrawTexture(spaceshipMap, 0, 0, WHITE);
+		DrawTexture(maps[1], 0, 0, WHITE);
 
 		GameManager::GetInstance()->GetCharacter()->DrawCharacter();
 
@@ -361,7 +370,7 @@ void Renderer::Update() {
 	else if (shop) {
 
 		// Draw shop
-		DrawTexture(shopMap, 0, 0, WHITE);
+		DrawTexture(menus[2], 0, 0, WHITE);
 
 		// Draw the Earth's stages
 		if (earthStage <= 3) {
@@ -405,19 +414,19 @@ void Renderer::Update() {
 		// Change current stage of Earth
 		if (earthStage == 1) {
 
-			DrawTexture(earthStage1, 20, 30, WHITE);
+			DrawTexture(earthStages[0], 20, 30, WHITE);
 		}
 		else if (earthStage == 2) {
 
-			DrawTexture(earthStage2, 20, 30, WHITE);
+			DrawTexture(earthStages[1], 20, 30, WHITE);
 		}
 		else if (earthStage == 3) {
 
-			DrawTexture(earthStage3, 20, 30, WHITE);
+			DrawTexture(earthStages[2], 20, 30, WHITE);
 		}
 		else if (earthStage == 4) {
 
-			DrawTexture(earthClean, 20, 30, WHITE);
+			DrawTexture(earthStages[3], 20, 30, WHITE);
 		}
 		else {
 			// Display end screen
