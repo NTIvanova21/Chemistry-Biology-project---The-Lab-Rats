@@ -32,6 +32,8 @@ public:
 
 	void AddTrash(Trash trash);
 
+	void CountTrash();
+
 private:
 	static Renderer* instance;
 

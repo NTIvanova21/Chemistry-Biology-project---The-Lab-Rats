@@ -51,13 +51,13 @@ void Renderer::LoadTrash() {
 		Vector2 position = { collectiveDistance, 850 + vertical };
 
 		if (trashList.at(i) == 1) {
-			AddTrash({ glassTexture, position, rotate });
+			AddTrash({ glassTexture, position, rotate, 1 });
 		}
 		if (trashList.at(i) == 2) {
-			AddTrash({ plasticTexture, position, rotate });
+			AddTrash({ plasticTexture, position, rotate, 2});
 		}
 		if (trashList.at(i) == 3) {
-			AddTrash({ paperTexture, position, rotate });
+			AddTrash({ paperTexture, position, rotate, 3 });
 		}
 
 	}
@@ -68,10 +68,28 @@ void Renderer::AddTrash(Trash trash) {
 }
 
 void Renderer::DrawTrash() {
-	for (auto i : this->trash) {
+	for (auto& i : this->trash) {
 		i.DrawTrash(scrollback);
-		i.Update();
+		i.Update(scrollback);
 	}
+}
+
+void Renderer::CountTrash() {
+	int tempGlass = 0, tempPlastic = 0, tempPaper = 0;
+	for (auto& i : this->trash) {
+		if (i.GetType() == 1) {
+			tempGlass++;
+		}
+		if (i.GetType() == 2) {
+			tempPlastic++;
+		}
+		if (i.GetType() == 3) {
+			tempPaper++;
+		}
+	}
+	counterGlass = tempGlass;
+	counterPlastic = tempPlastic;
+	counterPaper = tempPaper;
 }
 
 void Renderer::BackgroundMovement(Texture2D map, float& scrollback) {
@@ -83,7 +101,7 @@ void Renderer::BackgroundMovement(Texture2D map, float& scrollback) {
 
 		if (scrollback <= 0.0f && scrollback >= -1078.0f) {
 
-			if (current.x >= 700) {
+			if (current.x >= 750) {
 				scrollback -= 4.0f;
 			}
 			else {
@@ -100,7 +118,7 @@ void Renderer::BackgroundMovement(Texture2D map, float& scrollback) {
 	if (IsKeyDown(KEY_A)) {
 
 		if (scrollback <= -4.0f && scrollback >= -1265.0f) {
-			if (current.x <= 700) {
+			if (current.x <= 750) {
 				scrollback += 4.0f;
 			}
 			else {
@@ -181,6 +199,7 @@ void Renderer::Update() {
 		BackgroundMovement(map, scrollback);
 		DrawTextureEx(map, { scrollback }, 0.0f, 1.0f, WHITE);
 		DrawTrash();
+		CountTrash();
 		GameManager::GetInstance()->GetCharacter()->DrawCharacter();
 		if (IsKeyPressed(KEY_E) && current.x <= 116) {
 			playing = false;
@@ -235,16 +254,6 @@ void Renderer::Update() {
 			ShopCounter(&counterGlass, &glass, buttons.shopButtons[0], counterGlass1.c_str(), 1);
 			ShopCounter(&counterPlastic, &plastic, buttons.shopButtons[1], counterPlastic1.c_str(), 2);
 			ShopCounter(&counterPaper, &paper, buttons.shopButtons[2], counterPaper1.c_str(), 3);
-
-			if (IsKeyPressed(KEY_E)) {
-				counterGlass++;
-			}
-			if (IsKeyPressed(KEY_W)) {
-				counterPlastic++;
-			}
-			if (IsKeyPressed(KEY_Q)) {
-				counterPaper++;
-			}
 		}
 		else {
 			Button::GetInstance()->DrawButton(buttons.completed);
