@@ -278,6 +278,11 @@ void Renderer::Update() {
 	else if (shop) {
 
 		DrawTexture(shopMap, 0, 0, WHITE);
+
+		DrawTextEx(fonty, "Glass", { 1400, 180 }, 60, 5, WHITE);
+		DrawTextEx(fonty, "Plastic", { 1400, 380 }, 60, 5, WHITE);
+		DrawTextEx(fonty, "Paper", { 1400, 580 }, 60, 5, WHITE);
+
 		if (earthStage <= 3) {
 
 			counterGlass1 = std::to_string(counterGlass);
