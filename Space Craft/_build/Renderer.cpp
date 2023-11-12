@@ -22,6 +22,7 @@ void Renderer::LoadTextures() {
 	glassTexture = LoadTexture("../resources/glass.png");
 	plasticTexture = LoadTexture("../resources/plastic.png");
 	paperTexture = LoadTexture("../resources/paper.png");
+	arrow = LoadTexture("../resources/arrow.png");
 
 	icon = LoadImage("../resources/icon.png");
 
@@ -77,6 +78,9 @@ void Renderer::DrawTrash() {
 void Renderer::CountTrash() {
 	int tempGlass = 0, tempPlastic = 0, tempPaper = 0;
 	for (auto& i : this->trash) {
+		if (!i.IsTaken()) {
+			continue;
+		}
 		if (i.GetType() == 1) {
 			tempGlass++;
 		}
@@ -271,8 +275,7 @@ void Renderer::Update() {
 			shop = false;
 			spaceship = true;
 		}
-
-		DrawTextEx(fonty, "<=", { buttons.arrow.x, buttons.arrow.y - 20 }, 100, 10, WHITE);
+		DrawTexture(arrow, buttons.arrow.x, buttons.arrow.y - 3, WHITE);
 
 		if (earthStage == 1) {
 			DrawTexture(earthStage1, 20, 30, WHITE);

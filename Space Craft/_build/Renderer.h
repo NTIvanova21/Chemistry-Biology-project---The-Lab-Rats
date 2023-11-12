@@ -53,6 +53,7 @@ private:
 	Texture2D glassTexture;
 	Texture2D paperTexture;
 	Texture2D plasticTexture;
+	Texture2D arrow;
 
 	std::vector<Trash> trash;
 
