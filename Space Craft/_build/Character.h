@@ -20,7 +20,7 @@ public:
 
 private:
 
-    Vector2 position = { 200, 690 };
+    Vector2 position = { 200, 650 };
     
     float movementSpeed = 5;
 

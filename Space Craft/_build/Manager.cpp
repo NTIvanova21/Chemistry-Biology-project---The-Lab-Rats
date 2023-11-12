@@ -14,6 +14,7 @@ void Manager::Start() {
 	gameManager = GameManager::GetInstance();
 
 	renderer->LoadTextures();
+	renderer->LoadTrash();
 }
 
 void Manager::Update() {

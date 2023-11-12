@@ -1,8 +1,13 @@
 #pragma once
 
 #include "raylib.h"
-#include <string>
 #include "GameManager.h"
+#include "Trash.h"
+#include "Button.h"
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <time.h>
 
 class Renderer {
 public:
@@ -21,6 +26,12 @@ public:
 
 	void ShopCounter(int* counter, bool* stage, Rectangle button, const char* current, int type);
 
+	void LoadTrash();
+
+	void DrawTrash();
+
+	void AddTrash(Trash trash);
+
 private:
 	static Renderer* instance;
 
@@ -37,6 +48,11 @@ private:
 	Texture2D earthStage2;
 	Texture2D earthStage3;
 	Texture2D earthClean;
+	Texture2D glassTexture;
+	Texture2D paperTexture;
+	Texture2D plasticTexture;
+
+	std::vector<Trash> trash;
 
 	float scrollback = 0.0f;
 
