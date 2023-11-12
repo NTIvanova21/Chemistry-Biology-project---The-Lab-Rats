@@ -30,15 +30,15 @@ void Renderer::LoadTextures() {
 	SetWindowIcon(icon);
 }
 
-void Renderer::BackgroundMovement(Texture2D map,float& scrollback) {
+void Renderer::BackgroundMovement(Texture2D map, float& scrollback) {
 
 	auto character = GameManager::GetInstance()->GetCharacter();
 	Vector2 current = character->GetPosition();
 
-	if (IsKeyDown(KEY_D)){
+	if (IsKeyDown(KEY_D)) {
 
 		if (scrollback <= 0.0f && scrollback >= -1078.0f) {
-			
+
 			if (current.x >= 700) {
 				scrollback -= 4.0f;
 			}
@@ -46,16 +46,16 @@ void Renderer::BackgroundMovement(Texture2D map,float& scrollback) {
 				current.x += 4;
 				character->SetPosition(current);
 			}
-			
+
 		}
 		else if (current.x <= 1600) {
 			current.x += 4;
 			character->SetPosition(current);
 		}
 	}
-	if (IsKeyDown(KEY_A)){
+	if (IsKeyDown(KEY_A)) {
 
-		if (scrollback <= -4.0f && scrollback >= -1265.0f){
+		if (scrollback <= -4.0f && scrollback >= -1265.0f) {
 			if (current.x <= 700) {
 				scrollback += 4.0f;
 			}
@@ -64,7 +64,7 @@ void Renderer::BackgroundMovement(Texture2D map,float& scrollback) {
 				character->SetPosition(current);
 			}
 		}
-		else if (current.x >= 120){
+		else if (current.x >= 120) {
 			current.x -= 4;
 			character->SetPosition(current);
 		}
@@ -75,7 +75,7 @@ void Renderer::ShopCounter(int* counter, bool* completed, Rectangle button, cons
 
 	if (*counter < 5) {
 		Button::GetInstance()->DrawButtonsShop(button, false, type);
-		DrawTextEx(fonty, current, {button.x + 65, button.y - 10}, 90, 10, WHITE);
+		DrawTextEx(fonty, current, { button.x + 65, button.y - 10 }, 90, 10, WHITE);
 		DrawTextEx(fonty, "/5", { button.x + 135, button.y - 10 }, 90, 10, WHITE);
 	}
 	else {
@@ -182,16 +182,35 @@ void Renderer::Update() {
 	else if (shop) {
 
 		DrawTexture(shopMap, 0, 0, WHITE);
-		counterGlass1 = std::to_string(counterGlass);
-		counterPlastic1 = std::to_string(counterPlastic);
-		counterPaper1 = std::to_string(counterPaper);
-		ShopCounter(&counterGlass, &glass, buttons.shopButtons[0], counterGlass1.c_str(), 1 );
-		ShopCounter(&counterPlastic, &plastic, buttons.shopButtons[1], counterPlastic1.c_str(), 2) ;
-		ShopCounter(&counterPaper, &paper, buttons.shopButtons[2], counterPaper1.c_str(), 3);
-			
-		if (IsKeyPressed(KEY_E)) {
-			counterGlass++;
+		if (earthStage <= 3) {
+			counterGlass1 = std::to_string(counterGlass);
+			counterPlastic1 = std::to_string(counterPlastic);
+			counterPaper1 = std::to_string(counterPaper);
+
+			ShopCounter(&counterGlass, &glass, buttons.shopButtons[0], counterGlass1.c_str(), 1);
+			ShopCounter(&counterPlastic, &plastic, buttons.shopButtons[1], counterPlastic1.c_str(), 2);
+			ShopCounter(&counterPaper, &paper, buttons.shopButtons[2], counterPaper1.c_str(), 3);
+
+			if (IsKeyPressed(KEY_E)) {
+				counterGlass++;
+			}
+			if (IsKeyPressed(KEY_W)) {
+				counterPlastic++;
+			}
+			if (IsKeyPressed(KEY_Q)) {
+				counterPaper++;
+			}
 		}
+		else {
+			Button::GetInstance()->DrawButton(buttons.completed);
+			DrawTextEx(fonty, "Finish", { buttons.completed.x + 65, buttons.completed.y - 10 }, 90, 10, WHITE);
+			if (Button::GetInstance()->IsClicked(buttons.completed)) {
+				earthStage++;
+			}
+		}
+
+
+
 		Button::GetInstance()->DrawButton(buttons.arrow);
 
 		if (Button::GetInstance()->IsClicked(buttons.arrow)) {
@@ -199,8 +218,8 @@ void Renderer::Update() {
 			spaceship = true;
 		}
 
-		DrawTextEx(fonty, "<=", { buttons.arrow.x, buttons.arrow.y - 20  }, 100, 10, WHITE);
-			
+		DrawTextEx(fonty, "<=", { buttons.arrow.x, buttons.arrow.y - 20 }, 100, 10, WHITE);
+
 		if (earthStage == 1) {
 			DrawTexture(earthStage1, 20, 30, WHITE);
 		}
@@ -218,6 +237,6 @@ void Renderer::Update() {
 			DrawTextEx(fonty, "YOU WON MAN", { 720, 600 }, 100, 10, WHITE);
 		}
 	}
-		
+
 	EndDrawing();
 }
