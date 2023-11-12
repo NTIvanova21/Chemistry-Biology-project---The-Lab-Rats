@@ -2,6 +2,11 @@
   <img src="https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats/blob/main/Documentation/Images/logo.svg" width="425" text-align="center">
 </p>
 
+<div align = "center">
+   <img src = "https://img.shields.io/github/repo-size/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats?style=for-the-badge&color=blue">
+   <img src = "https://img.shields.io/github/directory-file-count/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats?style=for-the-badge&color=red">
+   <img src = "https://img.shields.io/github/issues/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats?style=for-the-badge&color=green">
+</div>
 
 <hr>
 
