@@ -9,3 +9,4 @@
 #define blueBefore Color{ 117, 123, 203, 255 }
 #define blueAfter Color{ 139, 147, 255, 255 }
 #define finishButton Color{ 193, 159, 243, 255 }
+#define arrowButton Color{ 94, 98, 174, 255 }

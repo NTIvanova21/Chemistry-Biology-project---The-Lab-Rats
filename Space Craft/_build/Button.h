@@ -18,6 +18,8 @@ public:
 
 	void DrawFinishButton(Rectangle rect);
 
+	void DrawArrowButton(Rectangle rect);
+
 	bool IsClicked(Rectangle rect);
 
 	Rectangle mainMenuButtons[3] = {
@@ -36,6 +38,8 @@ public:
 	};
 
 	Rectangle completed = { 1400,430,300,70 };
+
+	Rectangle next = { 1800, 100, 70,70 };
 
 private:
 	static Button* instance;

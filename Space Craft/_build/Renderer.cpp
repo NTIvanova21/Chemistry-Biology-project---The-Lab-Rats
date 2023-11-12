@@ -20,6 +20,9 @@ void Renderer::LoadTextures() {
 	arrow = LoadTexture("../resources/arrow.png");
 	endScreen = LoadTexture("../resources/end_screen.png");
 	cutScene = LoadTexture("../resources/cut_scene.png");
+	reversedArrow = LoadTexture("../resources/arrow_reversed.png");
+
+	frameRec = { 0, 0, (float)cutScene.width / 4, (float)cutScene.height };
 
 	icon = LoadImage("../resources/icon.png");
 
@@ -29,8 +32,6 @@ void Renderer::LoadTextures() {
 }
 
 void Renderer::LoadTrash() {
-
-	srand(time(NULL));
 
 	std::vector<int> trashList = { 1, 3, 2, 1, 2, 2, 1, 2, 3, 1, 3, 3 };
 
@@ -187,6 +188,7 @@ void Renderer::Update() {
 		if (Button::GetInstance()->IsClicked(buttons.mainMenuButtons[0])) {
 
 			menu = false;
+			cutscene = true;
 		}
 		if (Button::GetInstance()->IsClicked(buttons.mainMenuButtons[1])) {
 
@@ -210,6 +212,27 @@ void Renderer::Update() {
 			menu = true;
 			info = false;
 		}
+	}
+	else if (cutscene) {
+		if (frames <= 3) {
+
+			frameRec.x = frames * cutScene.width / 4;
+
+			DrawTextureRec(cutScene, frameRec, { 0,0 }, WHITE);
+
+			Button::GetInstance()->DrawArrowButton(buttons.next);
+
+			DrawTexture(reversedArrow, buttons.next.x + 6, buttons.next.y + 3, WHITE);
+
+			if (Button::GetInstance()->IsClicked(buttons.next)) {
+				frames++;
+			}
+		}
+		else {
+			cutscene = false;
+			playing = true;
+		}
+
 	}
 	else if (playing) {
 

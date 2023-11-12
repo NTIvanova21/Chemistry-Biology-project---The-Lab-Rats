@@ -44,3 +44,6 @@ void Button::DrawFinishButton(Rectangle rect){
 	DrawRectangleRec(rect, finishButton);
 } 
 
+void Button::DrawArrowButton(Rectangle rect) {
+	DrawRectangleRec(rect, arrowButton);
+}
