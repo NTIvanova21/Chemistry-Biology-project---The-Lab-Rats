@@ -19,6 +19,8 @@ public:
 
 	void BackgroundMovement(Texture2D map, float& scrollback);
 
+	void ShopCounter(int* counter, bool* stage, Rectangle button, const char* current, int type);
+
 private:
 	static Renderer* instance;
 

@@ -7,10 +7,10 @@
 Renderer* Renderer::instance = nullptr;
 Button buttons;
 
-bool menu = true, info = false, playing = true, spaceship = false, shop = false, glass = false;
+bool menu = true, info = false, playing = true, spaceship = false, shop = false, glass = false, plastic = false, paper = false;
 
-int earthStage = 1, counterGlass = 0;
-std::string counterGlass1;
+int earthStage = 1, counterGlass = 0, counterPlastic = 0, counterPaper = 0;
+std::string counterGlass1, counterPlastic1, counterPaper1;
 
 void Renderer::LoadTextures() {
 	mainMenu = LoadTexture("../resources/main_menu.png");
@@ -67,6 +67,30 @@ void Renderer::BackgroundMovement(Texture2D map,float& scrollback) {
 		else if (current.x >= 120){
 			current.x -= 4;
 			character->SetPosition(current);
+		}
+	}
+}
+// 1 - glass, 2- plastic, 3 - paper;
+void Renderer::ShopCounter(int* counter, bool* completed, Rectangle button, const char* current, int type) {
+
+	if (*counter < 5) {
+		Button::GetInstance()->DrawButtonsShop(button, false, type);
+		DrawTextEx(fonty, current, {button.x + 65, button.y - 10}, 90, 10, WHITE);
+		DrawTextEx(fonty, "/5", { button.x + 135, button.y - 10 }, 90, 10, WHITE);
+	}
+	else {
+		if (Button::GetInstance()->IsClicked(button) && !*completed) {
+			*completed = true;
+			earthStage++;
+		}
+		if (*completed) {
+			Button::GetInstance()->DrawButtonsShop(button, true, type);
+			DrawTextEx(fonty, "Completed", { button.x + 8, button.y }, 60, 10, WHITE);
+		}
+		else {
+			Button::GetInstance()->DrawButtonsShop(button, true, type);
+			DrawTextEx(fonty, current, { button.x + 65, button.y - 10 }, 90, 10, WHITE);
+			DrawTextEx(fonty, "/5", { button.x + 135, button.y - 10 }, 90, 10, WHITE);
 		}
 	}
 }
@@ -158,34 +182,16 @@ void Renderer::Update() {
 	else if (shop) {
 
 		DrawTexture(shopMap, 0, 0, WHITE);
-		if (counterGlass < 15) {
-			Button::GetInstance()->DrawButtonGlass(buttons.shopButtons[0], false);
-			DrawTextEx(fonty, counterGlass1.c_str(), { buttons.shopButtons[0].x + 65, buttons.shopButtons[0].y - 10 }, 90, 10, WHITE);
-			DrawTextEx(fonty, "/15", { buttons.shopButtons[0].x + 135, buttons.shopButtons[0].y - 10 }, 90, 10, WHITE);
-		}
-		else {
-			if (Button::GetInstance()->IsClicked(buttons.shopButtons[0])){
-				glass = true;
-				earthStage++;
-			}
-			if (glass) {
-				Button::GetInstance()->DrawButtonGlass(buttons.shopButtons[0], true);
-				DrawTextEx(fonty, "Completed", { buttons.shopButtons[0].x + 8, buttons.shopButtons[0].y }, 60, 10, WHITE);
-			}
-			else {
-				Button::GetInstance()->DrawButtonGlass(buttons.shopButtons[0], true);
-				DrawTextEx(fonty, counterGlass1.c_str(), { buttons.shopButtons[0].x + 65, buttons.shopButtons[0].y - 10 }, 90, 10, WHITE);
-				DrawTextEx(fonty, "/15", { buttons.shopButtons[0].x + 135, buttons.shopButtons[0].y - 10 }, 90, 10, WHITE);
-			}
-		}
+		counterGlass1 = std::to_string(counterGlass);
+		counterPlastic1 = std::to_string(counterPlastic);
+		counterPaper1 = std::to_string(counterPaper);
+		ShopCounter(&counterGlass, &glass, buttons.shopButtons[0], counterGlass1.c_str(), 1 );
+		ShopCounter(&counterPlastic, &plastic, buttons.shopButtons[1], counterPlastic1.c_str(), 2) ;
+		ShopCounter(&counterPaper, &paper, buttons.shopButtons[2], counterPaper1.c_str(), 3);
 			
-		Button::GetInstance()->DrawButtonPlastic(buttons.shopButtons[1]);
-		Button::GetInstance()->DrawButtonPaper(buttons.shopButtons[2]);
 		if (IsKeyPressed(KEY_E)) {
 			counterGlass++;
 		}
-		counterGlass1 = std::to_string(counterGlass);
-			
 		Button::GetInstance()->DrawButton(buttons.arrow);
 
 		if (Button::GetInstance()->IsClicked(buttons.arrow)) {

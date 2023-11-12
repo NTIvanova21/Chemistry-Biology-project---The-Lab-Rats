@@ -14,11 +14,7 @@ public:
 
 	void DrawButton(Rectangle rect);
 
-	void DrawButtonGlass(Rectangle rect, bool completed);
-
-	void DrawButtonPlastic(Rectangle rect);
-
-	void DrawButtonPaper(Rectangle rect);
+	void DrawButtonsShop(Rectangle rect, bool completed, int type);
 
 	bool IsClicked(Rectangle rect);
 
@@ -34,6 +30,7 @@ public:
 		{1400,430,300,70 },
 		{1400,630,300,70 }
 	};
+	Rectangle completed = { 1400,430,300,70 };
 private:
 	static Button* instance;
 	

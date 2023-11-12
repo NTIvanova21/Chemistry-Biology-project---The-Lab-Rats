@@ -11,19 +11,30 @@ bool Button::IsClicked(Rectangle rect) {
 	return IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointRec(GetMousePosition(), rect);
 }
 
-void Button::DrawButtonGlass(Rectangle rect, bool completed) {
-	if (completed) {
-		DrawRectangleRec(rect, GREEN);
+void Button::DrawButtonsShop(Rectangle rect, bool completed, int type) {
+	if (type == 1) {
+		if (completed) {
+			DrawRectangleRec(rect, GREEN);
+		}
+		else {
+			DrawRectangleRec(rect, DARKGREEN);
+		}
 	}
-	else {
-		DrawRectangleRec(rect, DARKGREEN);
+	if (type == 2) {
+		if (completed) {
+			DrawRectangleRec(rect, YELLOW);
+		}
+		else {
+			DrawRectangleRec(rect, GOLD);
+		}
 	}
-}
-
-void Button::DrawButtonPlastic(Rectangle rect) {
-	DrawRectangleRec(rect, YELLOW);
-}
-
-void Button::DrawButtonPaper(Rectangle rect) {
-	DrawRectangleRec(rect, BLUE);
+	if (type == 3) {
+		if (completed) {
+			DrawRectangleRec(rect, BLUE);
+		}
+		else {
+			DrawRectangleRec(rect, DARKBLUE);
+		}
+	}
+	
 }
