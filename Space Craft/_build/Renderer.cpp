@@ -7,9 +7,10 @@
 Renderer* Renderer::instance = nullptr;
 Button buttons;
 
-bool menu = true, info = false, playing = true, spaceship = false, shop = false;
+bool menu = true, info = false, playing = true, spaceship = false, shop = false, glass = false;
 
-int counter = 0, earthStage = 1;
+int earthStage = 1, counterGlass = 0;
+std::string counterGlass1;
 
 void Renderer::LoadTextures() {
 	mainMenu = LoadTexture("../resources/main_menu.png");
@@ -33,42 +34,39 @@ void Renderer::BackgroundMovement(Texture2D map,float& scrollback) {
 
 	auto character = GameManager::GetInstance()->GetCharacter();
 	Vector2 current = character->GetPosition();
+
 	if (IsKeyDown(KEY_D)){
 
 		if (scrollback <= 0.0f && scrollback >= -1078.0f) {
 			
-			if (scrollback <= 0.0f && scrollback >= -1078.0f && counter > 145) {
+			if (current.x >= 700) {
 				scrollback -= 4.0f;
 			}
 			else {
 				current.x += 4;
 				character->SetPosition(current);
-				counter++;
 			}
 			
 		}
 		else if (current.x <= 1600) {
 			current.x += 4;
 			character->SetPosition(current);
-			counter = 0;
 		}
 	}
 	if (IsKeyDown(KEY_A)){
 
 		if (scrollback <= -4.0f && scrollback >= -1265.0f){
-			if (scrollback <= -4.0f && scrollback >= -1265.0f && counter > 190) {
+			if (current.x <= 700) {
 				scrollback += 4.0f;
 			}
 			else {
 				current.x -= 4;
 				character->SetPosition(current);
-				counter++;
 			}
 		}
 		else if (current.x >= 120){
 			current.x -= 4;
 			character->SetPosition(current);
-			counter = 0;
 		}
 	}
 }
@@ -79,117 +77,141 @@ void Renderer::Update() {
 
 	BeginDrawing();
 
-		ClearBackground(WHITE);
-		if (menu) {
-			DrawTexture(mainMenu, 0, 0, WHITE);
+	ClearBackground(WHITE);
+	if (menu) {
+		DrawTexture(mainMenu, 0, 0, WHITE);
 
-			Button::GetInstance()->DrawButton(buttons.start);	
-			Button::GetInstance()->DrawButton(buttons.info);
-			Button::GetInstance()->DrawButton(buttons.quit);
-			
-			DrawTextEx(fonty, "Play", { buttons.start.x + 60, buttons.start.y - 4 }, 100, 10, WHITE);
-			DrawTextEx(fonty, "Info", { buttons.info.x + 60, buttons.info.y - 4 }, 100, 10, WHITE);
-			DrawTextEx(fonty, "Quit", { buttons.quit.x + 60, buttons.quit.y - 4 }, 100, 10, WHITE);
+		Button::GetInstance()->DrawButton(buttons.mainMenuButtons[0]);
+		Button::GetInstance()->DrawButton(buttons.mainMenuButtons[1]);
+		Button::GetInstance()->DrawButton(buttons.mainMenuButtons[2]);
 
-			if (Button::GetInstance()->IsClicked(buttons.start)) {
-				menu = false;
-			}
-			if (Button::GetInstance()->IsClicked(buttons.info)) {
-				info = true;
-				menu = false;
-			}
-			if (Button::GetInstance()->IsClicked(buttons.quit)) {
-				Manager::GetInstance()->Close();
-			}
+		DrawTextEx(fonty, "Play", { buttons.mainMenuButtons[0].x + 60, buttons.mainMenuButtons[0].y - 4 }, 100, 10, WHITE);
+		DrawTextEx(fonty, "Info", { buttons.mainMenuButtons[1].x + 60, buttons.mainMenuButtons[1].y - 4 }, 100, 10, WHITE);
+		DrawTextEx(fonty, "Quit", { buttons.mainMenuButtons[2].x + 60, buttons.mainMenuButtons[2].y - 4 }, 100, 10, WHITE);
+
+		if (Button::GetInstance()->IsClicked(buttons.mainMenuButtons[0])) {
+			menu = false;
 		}
-		else if(info) {
-			DrawTexture(infoMenu, 0, 0, WHITE);
-			Button::GetInstance()->DrawButton(buttons.back);
-			DrawTextEx(fonty, "Back", { buttons.back.x + 10, buttons.back.y - 5 }, 100, 10, WHITE);
-			if (Button::GetInstance()->IsClicked(buttons.back)) {
-				menu = true;
-				info = false;
-			}
+		if (Button::GetInstance()->IsClicked(buttons.mainMenuButtons[1])) {
+			info = true;
+			menu = false;
 		}
-		else if(playing) {
-			BackgroundMovement(map, scrollback);
-			DrawTextureEx(map, { scrollback }, 0.0f, 1.0f, WHITE);
-			GameManager::GetInstance()->GetCharacter()->DrawCharacter();
-			if (IsKeyPressed(KEY_E) && current.x <= 116) {
-				playing = false;
-				spaceship = true;
-				current.x = 1650;
+		if (Button::GetInstance()->IsClicked(buttons.mainMenuButtons[2])) {
+			Manager::GetInstance()->Close();
+		}
+	}
+	else if (info) {
+		DrawTexture(infoMenu, 0, 0, WHITE);
+		Button::GetInstance()->DrawButton(buttons.back);
+		DrawTextEx(fonty, "Back", { buttons.back.x + 10, buttons.back.y - 5 }, 100, 10, WHITE);
+		if (Button::GetInstance()->IsClicked(buttons.back)) {
+			menu = true;
+			info = false;
+		}
+	}
+	else if (playing) {
+		BackgroundMovement(map, scrollback);
+		DrawTextureEx(map, { scrollback }, 0.0f, 1.0f, WHITE);
+		GameManager::GetInstance()->GetCharacter()->DrawCharacter();
+		if (IsKeyPressed(KEY_E) && current.x <= 116) {
+			playing = false;
+			spaceship = true;
+			current.x = 1650;
+			character->SetPosition(current);
+		}
+	}
+	else if (spaceship) {
+		DrawTexture(spaceshipMap, 0, 0, WHITE);
+
+		GameManager::GetInstance()->GetCharacter()->DrawCharacter();
+		if (IsKeyDown(KEY_D)) {
+
+			if (current.x <= 1650) {
+				GameManager::GetInstance()->GetCharacter()->Walk(1);
+				current.x += 10;
 				character->SetPosition(current);
 			}
+
 		}
-		else if (spaceship) {
-			DrawTexture(spaceshipMap, 0, 0, WHITE);
-			
-			GameManager::GetInstance()->GetCharacter()->DrawCharacter();
-			if (IsKeyDown(KEY_D)) {
-				
-				if (current.x <= 1650) {
-					GameManager::GetInstance()->GetCharacter()->Walk(1);
-					current.x += 8;
-					character->SetPosition(current);
-				}
-				
-			}
-			if (IsKeyDown(KEY_A)) {
+		if (IsKeyDown(KEY_A)) {
 
-				if (current.x >= 200) {
-					GameManager::GetInstance()->GetCharacter()->Walk(-1);
-					current.x -= 8;
-					character->SetPosition(current);
-				}
-				
-			}
-			if (IsKeyPressed(KEY_E) && current.x >= 1650) {
-
-				current.x = 116;
+			if (current.x >= 200) {
+				GameManager::GetInstance()->GetCharacter()->Walk(-1);
+				current.x -= 10;
 				character->SetPosition(current);
+			}
 
-				playing = true;
-				spaceship = false;
-			}
-			if (IsKeyPressed(KEY_E) && current.x <= 200) {
-				spaceship = false;
-				shop = true;
-			}
 		}
-		else if (shop) {
+		if (IsKeyPressed(KEY_E) && current.x >= 1650) {
 
-			DrawTexture(shopMap, 0, 0, WHITE);
+			current.x = 116;
+			character->SetPosition(current);
 
-			Button::GetInstance()->DrawButton(buttons.arrow);
-			if (Button::GetInstance()->IsClicked(buttons.arrow)) {
-				shop = false;
-				spaceship = true;
-			}
-			DrawTextEx(fonty, "<=", { buttons.arrow.x, buttons.arrow.y - 20  }, 100, 10, WHITE);
+			playing = true;
+			spaceship = false;
+		}
+		if (IsKeyPressed(KEY_E) && current.x <= 200) {
+			spaceship = false;
+			shop = true;
+		}
+	}
+	else if (shop) {
 
-			if (IsKeyPressed(KEY_E)) {
+		DrawTexture(shopMap, 0, 0, WHITE);
+		if (counterGlass < 15) {
+			Button::GetInstance()->DrawButtonGlass(buttons.shopButtons[0], false);
+			DrawTextEx(fonty, counterGlass1.c_str(), { buttons.shopButtons[0].x + 65, buttons.shopButtons[0].y - 10 }, 90, 10, WHITE);
+			DrawTextEx(fonty, "/15", { buttons.shopButtons[0].x + 135, buttons.shopButtons[0].y - 10 }, 90, 10, WHITE);
+		}
+		else {
+			if (Button::GetInstance()->IsClicked(buttons.shopButtons[0])){
+				glass = true;
 				earthStage++;
 			}
-			
-			if (earthStage == 1) {
-				DrawTexture(earthStage1, 20, 30, WHITE);
-			}
-			else if (earthStage == 2) {
-				DrawTexture(earthStage2, 20, 30, WHITE);
-			}
-			else if (earthStage == 3) {
-				DrawTexture(earthStage3, 20, 30, WHITE);
-			}
-			else if (earthStage == 4) {
-				DrawTexture(earthClean, 20, 30, WHITE);
+			if (glass) {
+				Button::GetInstance()->DrawButtonGlass(buttons.shopButtons[0], true);
+				DrawTextEx(fonty, "Completed", { buttons.shopButtons[0].x + 8, buttons.shopButtons[0].y }, 60, 10, WHITE);
 			}
 			else {
-				DrawTexture(mainMenu, 0, 0, WHITE);
-				DrawTextEx(fonty, "YOU WON MAN", { 720, 600 }, 100, 10, WHITE);
+				Button::GetInstance()->DrawButtonGlass(buttons.shopButtons[0], true);
+				DrawTextEx(fonty, counterGlass1.c_str(), { buttons.shopButtons[0].x + 65, buttons.shopButtons[0].y - 10 }, 90, 10, WHITE);
+				DrawTextEx(fonty, "/15", { buttons.shopButtons[0].x + 135, buttons.shopButtons[0].y - 10 }, 90, 10, WHITE);
 			}
 		}
-		
+			
+		Button::GetInstance()->DrawButtonPlastic(buttons.shopButtons[1]);
+		Button::GetInstance()->DrawButtonPaper(buttons.shopButtons[2]);
+		if (IsKeyPressed(KEY_E)) {
+			counterGlass++;
+		}
+		counterGlass1 = std::to_string(counterGlass);
+			
+		Button::GetInstance()->DrawButton(buttons.arrow);
 
+		if (Button::GetInstance()->IsClicked(buttons.arrow)) {
+			shop = false;
+			spaceship = true;
+		}
+
+		DrawTextEx(fonty, "<=", { buttons.arrow.x, buttons.arrow.y - 20  }, 100, 10, WHITE);
+			
+		if (earthStage == 1) {
+			DrawTexture(earthStage1, 20, 30, WHITE);
+		}
+		else if (earthStage == 2) {
+			DrawTexture(earthStage2, 20, 30, WHITE);
+		}
+		else if (earthStage == 3) {
+			DrawTexture(earthStage3, 20, 30, WHITE);
+		}
+		else if (earthStage == 4) {
+			DrawTexture(earthClean, 20, 30, WHITE);
+		}
+		else {
+			DrawTexture(mainMenu, 0, 0, WHITE);
+			DrawTextEx(fonty, "YOU WON MAN", { 720, 600 }, 100, 10, WHITE);
+		}
+	}
+		
 	EndDrawing();
 }
