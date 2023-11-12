@@ -1,10 +1,13 @@
-﻿  Renderer.cpp
-C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(37,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(49,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(53,24): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(53,24): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(53,48): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(53,48): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(315,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(315,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  game-premake.vcxproj -> C:\Users\user\Documents\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_bin\Debug\game-premake.exe
+﻿  Manager.cpp
+  Renderer.cpp
+D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(35,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(47,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(51,24): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(51,24): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(51,48): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(51,48): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(314,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_build\Renderer.cpp(314,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  main.cpp
+  Generating Code...
+  game-premake.vcxproj -> D:\School\Programming\Projects\Chemistry-Biology-project---The-Lab-Rats\Space Craft\_bin\Debug\game-premake.exe

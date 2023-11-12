@@ -4,11 +4,6 @@
 Renderer* Renderer::instance = nullptr;
 Button buttons;
 
-bool menu = true, info = false, playing = true, spaceship = false, shop = false, glass = false, plastic = false, paper = false;
-
-int earthStage = 1, counterGlass = 0, counterPlastic = 0, counterPaper = 0;
-std::string counterGlass1, counterPlastic1, counterPaper1;
-
 void Renderer::LoadTextures() {
 	mainMenu = LoadTexture("../resources/main_menu.png");
 	map = LoadTexture("../resources/main_background.png");
@@ -24,6 +19,7 @@ void Renderer::LoadTextures() {
 	paperTexture = LoadTexture("../resources/paper.png");
 	arrow = LoadTexture("../resources/arrow.png");
 	endScreen = LoadTexture("../resources/end_screen.png");
+	cutScene = LoadTexture("../resources/cut_scene.png");
 
 	icon = LoadImage("../resources/icon.png");
 
@@ -279,11 +275,12 @@ void Renderer::Update() {
 
 		DrawTexture(shopMap, 0, 0, WHITE);
 
-		DrawTextEx(fonty, "Glass", { 1400, 180 }, 60, 5, WHITE);
-		DrawTextEx(fonty, "Plastic", { 1400, 380 }, 60, 5, WHITE);
-		DrawTextEx(fonty, "Paper", { 1400, 580 }, 60, 5, WHITE);
 
 		if (earthStage <= 3) {
+
+			DrawTextEx(fonty, "Glass", { 1400, 180 }, 60, 5, WHITE);
+			DrawTextEx(fonty, "Plastic", { 1400, 380 }, 60, 5, WHITE);
+			DrawTextEx(fonty, "Paper", { 1400, 580 }, 60, 5, WHITE);
 
 			counterGlass1 = std::to_string(counterGlass);
 			counterPlastic1 = std::to_string(counterPlastic);

@@ -55,9 +55,16 @@ private:
 	Texture2D plasticTexture;
 	Texture2D arrow;
 	Texture2D endScreen;
+	Texture2D cutScene;
 
 	std::vector<Trash> trash;
 
 	float scrollback = 0.0f;
+
+	bool menu = true, info = false, playing = true, spaceship = false, shop = false, glass = false, plastic = false, paper = false;
+
+	int earthStage = 1, counterGlass = 0, counterPlastic = 0, counterPaper = 0, frames = 0;
+
+	std::string counterGlass1, counterPlastic1, counterPaper1;
 
 };
