@@ -54,6 +54,7 @@ private:
 	Texture2D paperTexture;
 	Texture2D plasticTexture;
 	Texture2D arrow;
+	Texture2D endScreen;
 
 	std::vector<Trash> trash;
 
