@@ -261,7 +261,7 @@ void Renderer::Update() {
 		}
 		else {
 			Button::GetInstance()->DrawButton(buttons.completed);
-			DrawTextEx(fonty, "Finish", { buttons.completed.x + 65, buttons.completed.y - 10 }, 90, 10, WHITE);
+			DrawTextEx(fonty, "Finish", { buttons.completed.x + 25, buttons.completed.y - 10 }, 90, 10, WHITE);
 			if (Button::GetInstance()->IsClicked(buttons.completed)) {
 				earthStage++;
 			}

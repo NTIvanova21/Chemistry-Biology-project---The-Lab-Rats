@@ -14,26 +14,26 @@ bool Button::IsClicked(Rectangle rect) {
 void Button::DrawButtonsShop(Rectangle rect, bool completed, int type) {
 	if (type == 1) {
 		if (completed) {
-			DrawRectangleRec(rect, GREEN);
+			DrawRectangleRec(rect, greenAfter);
 		}
 		else {
-			DrawRectangleRec(rect, DARKGREEN);
+			DrawRectangleRec(rect, greenBefore);
 		}
 	}
 	if (type == 2) {
 		if (completed) {
-			DrawRectangleRec(rect, YELLOW);
+			DrawRectangleRec(rect, yellowAfter);
 		}
 		else {
-			DrawRectangleRec(rect, GOLD);
+			DrawRectangleRec(rect, yellowBefore);
 		}
 	}
 	if (type == 3) {
 		if (completed) {
-			DrawRectangleRec(rect, BLUE);
+			DrawRectangleRec(rect, blueAfter);
 		}
 		else {
-			DrawRectangleRec(rect, DARKBLUE);
+			DrawRectangleRec(rect, blueBefore);
 		}
 	}
 	
