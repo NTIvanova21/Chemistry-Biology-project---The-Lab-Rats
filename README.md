@@ -5,7 +5,7 @@
 <div align = "center">
    <img src = "https://img.shields.io/github/repo-size/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats?style=for-the-badge&color=blue">
    <img src = "https://img.shields.io/github/directory-file-count/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats?style=for-the-badge&color=red">
-   <img src = "https://img.shields.io/github/issues/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats?style=for-the-badge&color=green">
+   <img src = "https://img.shields.io/github/issues-closed/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats?style=for-the-badge&color=green">
 </div>
 
 <hr>
