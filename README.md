@@ -1,8 +1,7 @@
-# The-Lab-Rats
-
 <p align = "center">
   <img src="https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats/blob/main/Documentation/Images/logo.svg" width="425" text-align="center">
 </p>
+
 
 <hr>
 
@@ -45,7 +44,7 @@ https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats.git
 # 📄 Documentation
 ### ➤ <a href="https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats/blob/main/Documentation/Documentation.docx">Documentation</a><img src="https://cdn.worldvectorlogo.com/logos/word-1.svg" alt="Word" width="30" height="20"/> 
 ### ➤ <a href="https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats/blob/main/Documentation/Presentation.pptx">Presentation </a><img src="https://cdn.worldvectorlogo.com/logos/powerpoint-2.svg" alt="PowerPoint" width="30" height="20"/>
-### ➤ <a href="#">QA documentation </a><img src="https://cdn.worldvectorlogo.com/logos/excel-4.svg" alt="Word" width="30" height="20"/>
+### ➤ <a href="https://github.com/NTIvanova21/Chemistry-Biology-project---The-Lab-Rats/blob/main/Documentation/QA_Documentation.xlsx">QA documentation </a><img src="https://cdn.worldvectorlogo.com/logos/excel-4.svg" alt="Excel" width="30" height="20"/>
 
 # 💻 Used Technologies
 ### Used code editor & collaborative service: 
