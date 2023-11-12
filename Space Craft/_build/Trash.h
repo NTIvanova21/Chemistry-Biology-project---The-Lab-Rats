@@ -6,6 +6,7 @@
 
 class Trash {
 public:
+	// Initialise constructor
 	Trash(Texture texture, Vector2 position, float rotation, int type);
 
 	void Update(float scrollback);

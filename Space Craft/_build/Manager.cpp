@@ -4,12 +4,16 @@ Manager* Manager::instance = nullptr;
 
 void Manager::Initialize() {
 
+	//Initialize window
 	InitWindow(screenWidth, screenHeight, screenTitle);
+	ToggleFullscreen();
 	SetTargetFPS(60);
 	Start();
 }
 
 void Manager::Start() {
+
+	// Get instance for renderer and game manager
 	renderer = Renderer::GetInstance();
 	gameManager = GameManager::GetInstance();
 
@@ -18,6 +22,8 @@ void Manager::Start() {
 }
 
 void Manager::Update() {
+
+	// Call Update function
 	renderer->Update();
 	gameManager->Update();
 }

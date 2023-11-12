@@ -1,25 +1,30 @@
 #include "Character.h"
 
+// Load character sprite
 Character::Character(std::string characterWalkPath) {
     this->characterWalk = LoadTexture(characterWalkPath.c_str());
 
     frameRec = { 0, 0, (float)characterWalk.width / 8, (float)characterWalk.height };
 }
 
-Vector2 Character::GetPosition(){
+// Return the position
+Vector2 Character::GetPosition() {
+
     return position;
 }
 
-void Character::SetPosition(Vector2 position)
-{
+void Character::SetPosition(Vector2 position) {
     this->position = position;
 }
 
+
 void Character::DrawCharacter() {
 
+    // Draw character
     frameRec.x = (float)frame * (float)characterWalk.width / 8;
 
     frameRec.width = abs(frameRec.width);
+    // Change the direction of the character
     if (isFlipped) {
         frameRec.width *= -1;
     }
@@ -27,8 +32,9 @@ void Character::DrawCharacter() {
     DrawTextureRec(characterWalk, frameRec, position, WHITE);
 }
 
-// -1 - Left, 1 - Right
 void Character::Walk(int direction) {
+    
+    // Make the character walk
     isFlipped = direction == 1;
     time += GetFrameTime();
 
@@ -37,9 +43,11 @@ void Character::Walk(int direction) {
         frame++;
     }
 
-    frame %= 8; // Replace with maxFrames
+    frame %= 8; 
 }
 
 void Character::ResetFrames() {
+
+    // Reset the frames to zero
     frame = 0;
 }

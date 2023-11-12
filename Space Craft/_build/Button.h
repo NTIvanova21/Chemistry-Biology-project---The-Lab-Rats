@@ -22,6 +22,7 @@ public:
 
 	bool IsClicked(Rectangle rect);
 
+	// Define Buttons
 	Rectangle mainMenuButtons[3] = {
 		{ 810,450,300,100 },
 		{ 810,650,300,100 },

@@ -4,6 +4,8 @@
 Renderer* Renderer::instance = nullptr;
 Button buttons;
 
+//Load textures, images, font and icon
+
 void Renderer::LoadTextures() {
 	mainMenu = LoadTexture("../resources/main_menu.png");
 	map = LoadTexture("../resources/main_background.png");
@@ -35,6 +37,8 @@ void Renderer::LoadTrash() {
 
 	std::vector<int> trashList = { 1, 3, 2, 1, 2, 2, 1, 2, 3, 1, 3, 3 };
 
+	// Randomise where the trash spawn
+
 	std::random_shuffle(trashList.begin(), trashList.end());
 
 	int collectiveDistance = 700;
@@ -49,6 +53,7 @@ void Renderer::LoadTrash() {
 
 		Vector2 position = { collectiveDistance, 850 + vertical };
 
+		// Spawn trash
 		if (trashList.at(i) == 1) {
 			AddTrash({ glassTexture, position, rotate, 1 });
 		}
@@ -62,10 +67,12 @@ void Renderer::LoadTrash() {
 	}
 }
 
+// Add the trash to the vector
 void Renderer::AddTrash(Trash trash) {
 	this->trash.push_back(trash);
 }
 
+// Make trash stationary
 void Renderer::DrawTrash() {
 	for (auto& i : this->trash) {
 		i.DrawTrash(scrollback);
@@ -73,6 +80,7 @@ void Renderer::DrawTrash() {
 	}
 }
 
+// Update each counter when the coresponding trash is taken
 void Renderer::CountTrash() {
 	int tempGlass = 0, tempPlastic = 0, tempPaper = 0;
 	for (auto& i : this->trash) {
@@ -89,16 +97,20 @@ void Renderer::CountTrash() {
 			tempPaper++;
 		}
 	}
+
 	counterGlass = tempGlass;
 	counterPlastic = tempPlastic;
 	counterPaper = tempPaper;
 }
+
+// Move the backgound when the character is moving
 
 void Renderer::BackgroundMovement(Texture2D map, float& scrollback) {
 
 	auto character = GameManager::GetInstance()->GetCharacter();
 	Vector2 current = character->GetPosition();
 
+	// Make character move right
 	if (IsKeyDown(KEY_D)) {
 
 		if (scrollback <= 0.0f && scrollback >= -1078.0f) {
@@ -117,6 +129,8 @@ void Renderer::BackgroundMovement(Texture2D map, float& scrollback) {
 			character->SetPosition(current);
 		}
 	}
+
+	// Make character move left
 	if (IsKeyDown(KEY_A)) {
 
 		if (scrollback <= -4.0f && scrollback >= -1265.0f) {
@@ -134,9 +148,11 @@ void Renderer::BackgroundMovement(Texture2D map, float& scrollback) {
 		}
 	}
 }
-// 1 - glass, 2- plastic, 3 - paper;
+
+
 void Renderer::ShopCounter(int* counter, bool* completed, Rectangle button, const char* current, int type) {
 
+	// Show the counter of the trash
 	if (*counter < 4) {
 
 		Button::GetInstance()->DrawButtonsShop(button, false, type);
@@ -145,16 +161,15 @@ void Renderer::ShopCounter(int* counter, bool* completed, Rectangle button, cons
 	}
 	else {
 
+		
 		if (Button::GetInstance()->IsClicked(button) && !*completed) {
-
 			*completed = true;
 			earthStage++;
 		}
 
+		// Display completed status on click
 		if (*completed) {
-
 			Button::GetInstance()->DrawButtonsShop(button, true, type);
-
 			DrawTextEx(fonty, "Completed", { button.x + 8, button.y }, 60, 10, WHITE);
 		}
 		else {
@@ -165,7 +180,7 @@ void Renderer::ShopCounter(int* counter, bool* completed, Rectangle button, cons
 	}
 }
 void Renderer::Update() {
-
+	//Get the character's position
 	auto character = GameManager::GetInstance()->GetCharacter();
 	Vector2 current = character->GetPosition();
 
@@ -177,38 +192,42 @@ void Renderer::Update() {
 
 		DrawTexture(mainMenu, 0, 0, WHITE);
 
+		// Draw menu buttons
 		Button::GetInstance()->DrawButton(buttons.mainMenuButtons[0]);
 		Button::GetInstance()->DrawButton(buttons.mainMenuButtons[1]);
 		Button::GetInstance()->DrawButton(buttons.mainMenuButtons[2]);
 
+		// Draw the text for the menu buttons
 		DrawTextEx(fonty, "Play", { buttons.mainMenuButtons[0].x + 60, buttons.mainMenuButtons[0].y - 4 }, 100, 10, WHITE);
 		DrawTextEx(fonty, "Info", { buttons.mainMenuButtons[1].x + 60, buttons.mainMenuButtons[1].y - 4 }, 100, 10, WHITE);
 		DrawTextEx(fonty, "Quit", { buttons.mainMenuButtons[2].x + 60, buttons.mainMenuButtons[2].y - 4 }, 100, 10, WHITE);
 
 		if (Button::GetInstance()->IsClicked(buttons.mainMenuButtons[0])) {
-
+			// Start the cutscene
 			menu = false;
 			cutscene = true;
 		}
 		if (Button::GetInstance()->IsClicked(buttons.mainMenuButtons[1])) {
-
+			// Open info
 			info = true;
 			menu = false;
 		}
 		if (Button::GetInstance()->IsClicked(buttons.mainMenuButtons[2])) {
-
+			// Quit the game
 			Manager::GetInstance()->Close();
 		}
 	}
 	else if (info) {
-
+		// Draw the info
 		DrawTexture(infoMenu, 0, 0, WHITE);
 
 		Button::GetInstance()->DrawButton(buttons.back);
 
+		// Draw the back button
 		DrawTextEx(fonty, "Back", { buttons.back.x + 10, buttons.back.y - 5 }, 100, 10, WHITE);
 
 		if (Button::GetInstance()->IsClicked(buttons.back)) {
+			// Return to the menu
 			menu = true;
 			info = false;
 		}
@@ -216,51 +235,60 @@ void Renderer::Update() {
 	else if (cutscene) {
 		if (frames <= 3) {
 
+			// Change frames
 			frameRec.x = frames * cutScene.width / 4;
 
+			// Start with the first cutscese
 			DrawTextureRec(cutScene, frameRec, { 0,0 }, WHITE);
 
 			Button::GetInstance()->DrawArrowButton(buttons.next);
 
+			// Add arrow for the next cutscene
 			DrawTexture(reversedArrow, buttons.next.x + 6, buttons.next.y + 3, WHITE);
 
 			if (Button::GetInstance()->IsClicked(buttons.next)) 
 			{
 				frames++;
 				
-			}if (frames == 0)
-				{
+			}
+			// Add text to the cutscenes
+			switch (frames) {
+				case 0:
 					DrawTextEx(fonty, "The year is 2078, the Earth is already so polluted that people cannot live there. Many of them are trying to", { 40, 880 }, 40, 3, BLACK);
 					DrawTextEx(fonty, "find a way out, but they don't have the financial means and most are exposed to death.", { 40, 930 }, 40, 3, BLACK);
-				}
-				if (frames == 1)
-				{
+					break;
+				case 1:
 					DrawTextEx(fonty, "Rich people have left Earth and built nice houses on the moon. There they live peacefully with their families", { 40, 880 }, 40, 3, BLACK);
 					DrawTextEx(fonty, "while ordinary people suffer on Earth.", { 40, 930 }, 40, 3, BLACK);
-				}
-				if (frames == 2)
-				{
+					break;
+				case 2:
 					DrawTextEx(fonty, "You are the chosen one to help all humans return to Earth and continue their lives there. Your task", { 40, 880 }, 40, 3, BLACK);
 					DrawTextEx(fonty, "is to clean up their mess as quickly as possible and save planet Earth.", { 40, 930 }, 40, 3, BLACK);
-				}
+					break;
+			}
+
 		}
 		else {
+			// Start gameplay
+
 			cutscene = false;
 			playing = true;
 		}
 
 	}
 	else if (playing) {
-
+		// Make the backgound move
 		BackgroundMovement(map, scrollback);
 
 		DrawTextureEx(map, { scrollback }, 0.0f, 1.0f, WHITE);
-
+		
+		// Add the trash
 		DrawTrash();
 		CountTrash();
 
 		GameManager::GetInstance()->GetCharacter()->DrawCharacter();
 
+		// Enter the spaceship
 		if (IsKeyPressed(KEY_E) && current.x <= 116) {
 
 			playing = false;
@@ -271,11 +299,12 @@ void Renderer::Update() {
 		}
 	}
 	else if (spaceship) {
-
+		// Draw spaseship
 		DrawTexture(spaceshipMap, 0, 0, WHITE);
 
 		GameManager::GetInstance()->GetCharacter()->DrawCharacter();
 
+		// Make the character move right
 		if (IsKeyDown(KEY_D)) {
 
 			if (current.x <= 1650) {
@@ -286,6 +315,7 @@ void Renderer::Update() {
 			}
 
 		}
+		// Make the character move left
 		if (IsKeyDown(KEY_A)) {
 
 			if (current.x >= 200) {
@@ -296,6 +326,7 @@ void Renderer::Update() {
 			}
 
 		}
+		// Exit the spaceship
 		if (IsKeyPressed(KEY_E) && current.x >= 1650) {
 
 			current.x = 116;
@@ -304,6 +335,7 @@ void Renderer::Update() {
 			playing = true;
 			spaceship = false;
 		}
+		// Enter shop
 		if (IsKeyPressed(KEY_E) && current.x <= 200) {
 
 			spaceship = false;
@@ -312,15 +344,18 @@ void Renderer::Update() {
 	}
 	else if (shop) {
 
+		// Draw shop
 		DrawTexture(shopMap, 0, 0, WHITE);
 
-
+		// Draw the Earth's stages
 		if (earthStage <= 3) {
 
+			// Add the text for the trash
 			DrawTextEx(fonty, "Glass", { 1400, 180 }, 60, 5, WHITE);
 			DrawTextEx(fonty, "Plastic", { 1400, 380 }, 60, 5, WHITE);
 			DrawTextEx(fonty, "Paper", { 1400, 580 }, 60, 5, WHITE);
 
+			// Add the trash counters
 			counterGlass1 = std::to_string(counterGlass);
 			counterPlastic1 = std::to_string(counterPlastic);
 			counterPaper1 = std::to_string(counterPaper);
@@ -333,6 +368,7 @@ void Renderer::Update() {
 
 			Button::GetInstance()->DrawFinishButton(buttons.completed);
 
+			// Draw the finish button
 			DrawTextEx(fonty, "Finish", { buttons.completed.x + 25, buttons.completed.y - 10 }, 90, 10, WHITE);
 
 			if (Button::GetInstance()->IsClicked(buttons.completed)) {
@@ -343,13 +379,14 @@ void Renderer::Update() {
 		Button::GetInstance()->DrawButton(buttons.arrow);
 
 		if (Button::GetInstance()->IsClicked(buttons.arrow)) {
-
+			// Exit the shop and enter the spaceship
 			shop = false;
 			spaceship = true;
 		}
 
 		DrawTexture(arrow, buttons.arrow.x, buttons.arrow.y - 3, WHITE);
 
+		// Change current stage of Earth
 		if (earthStage == 1) {
 
 			DrawTexture(earthStage1, 20, 30, WHITE);
@@ -367,7 +404,7 @@ void Renderer::Update() {
 			DrawTexture(earthClean, 20, 30, WHITE);
 		}
 		else {
-
+			// Display end screen
 			DrawTexture(endScreen, 0, 0, WHITE);
 
 		}

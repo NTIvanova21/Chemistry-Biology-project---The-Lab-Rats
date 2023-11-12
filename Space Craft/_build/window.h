@@ -1,6 +1,13 @@
+//Define the screen width and height
+
 #define screenWidth 1920
 #define screenHeight 1080
+
+// Define the screen title
+
 #define screenTitle "Space Craft"
+
+// Define the color for the buttons
 #define colorButtons Color{ 93, 127, 161, 255 }
 #define greenBefore Color{ 133, 195, 116, 225 }
 #define greenAfter Color{ 171, 211, 132, 255 }

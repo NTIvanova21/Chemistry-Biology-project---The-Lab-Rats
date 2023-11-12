@@ -20,6 +20,7 @@ public:
 
 private:
 
+    // Define position, movement speed, frame rectangle, texture, if it is flipped or not, the time and the frame
     Vector2 position = { 200, 650 };
     
     float movementSpeed = 5;
