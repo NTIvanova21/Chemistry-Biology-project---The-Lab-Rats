@@ -224,9 +224,25 @@ void Renderer::Update() {
 
 			DrawTexture(reversedArrow, buttons.next.x + 6, buttons.next.y + 3, WHITE);
 
-			if (Button::GetInstance()->IsClicked(buttons.next)) {
+			if (Button::GetInstance()->IsClicked(buttons.next)) 
+			{
 				frames++;
-			}
+				
+			}if (frames == 0)
+				{
+					DrawTextEx(fonty, "The year is 2078, the Earth is already so polluted that people cannot live there. Many of them are trying to", { 40, 880 }, 40, 3, BLACK);
+					DrawTextEx(fonty, "find a way out, but they don't have the financial means and most are exposed to death.", { 40, 930 }, 40, 3, BLACK);
+				}
+				if (frames == 1)
+				{
+					DrawTextEx(fonty, "Rich people have left Earth and built nice houses on the moon. There they live peacefully with their families", { 40, 880 }, 40, 3, BLACK);
+					DrawTextEx(fonty, "while ordinary people suffer on Earth.", { 40, 930 }, 40, 3, BLACK);
+				}
+				if (frames == 2)
+				{
+					DrawTextEx(fonty, "You are the chosen one to help all humans return to Earth and continue their lives there. Your task", { 40, 880 }, 40, 3, BLACK);
+					DrawTextEx(fonty, "is to clean up their mess as quickly as possible and save planet Earth.", { 40, 930 }, 40, 3, BLACK);
+				}
 		}
 		else {
 			cutscene = false;
