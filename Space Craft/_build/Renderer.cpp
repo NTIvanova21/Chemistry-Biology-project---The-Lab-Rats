@@ -124,7 +124,7 @@ void Renderer::BackgroundMovement(Texture2D map, float& scrollback) {
 
 		if (scrollback <= 0.0f && scrollback >= -1078.0f) {
 
-			if (current.x >= 750) {
+			if (current.x >= screenWidth / 2 - 210) {
 				scrollback -= 4.0f;
 			}
 			else {
@@ -143,7 +143,7 @@ void Renderer::BackgroundMovement(Texture2D map, float& scrollback) {
 	if (IsKeyDown(KEY_A)) {
 
 		if (scrollback <= -4.0f && scrollback >= -1265.0f) {
-			if (current.x <= 750) {
+			if (current.x <= screenWidth / 2 - 210) {
 				scrollback += 4.0f;
 			}
 			else {

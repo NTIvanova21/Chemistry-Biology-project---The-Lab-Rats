@@ -6,7 +6,6 @@ void Manager::Initialize() {
 
 	//Initialize window
 	InitWindow(screenWidth, screenHeight, screenTitle);
-	ToggleFullscreen();
 	SetTargetFPS(60);
 	Start();
 }
